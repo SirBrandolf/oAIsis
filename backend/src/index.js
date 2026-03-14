@@ -22,6 +22,9 @@ const evaluator = new PronunciationEvaluator();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const frontendDir = path.resolve(__dirname, "../../frontend/dist");
+const audioDir = path.resolve(__dirname, "../../frontend/public/audio");
+
+app.use("/audio", express.static(audioDir));
 
 app.get("/api/scenes", (_req, res) => {
   res.json({
@@ -44,7 +47,7 @@ app.get("/api/scenes/:sceneId/cards", (req, res) => {
     emoji: card.emoji,
     imagePlaceholder: card.imagePlaceholder,
     phrase: card.phrase,
-    audioUrl: audioService.getAudioUrl(card.audioAssetId, lessons.targetLanguage)
+    audioUrl: audioService.getAudioUrl(card.cardId, lessons.targetLanguage)
   }));
 
   res.json({
