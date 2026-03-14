@@ -3,68 +3,75 @@ export const lessons = {
   scenes: [
     {
       id: "home",
-      title: "Greetings",
+      title: "Greetings at Home",
       cards: [
         {
           cardId: "home-hello",
           emoji: "👋",
-          imagePlaceholder: "/images/hello.jpg",
+          imagePlaceholder: "/images/home-hello.png",
           phrase: "Hello",
           audioAssetId: "en-home-hello-1"
         },
         {
           cardId: "home-how-are-you",
           emoji: "🙂",
-          imagePlaceholder: "/images/how-are-you.jpg",
+          imagePlaceholder: "/images/home-how-are-you.png",
           phrase: "How are you?",
           audioAssetId: "en-home-how-are-you-1"
         },
         {
           cardId: "home-i-am-fine",
           emoji: "😊",
-          imagePlaceholder: "/images/i-am-fine.jpg",
+          imagePlaceholder: "/images/home-i-am-fine.png",
           phrase: "I am fine.",
           audioAssetId: "en-home-i-am-fine-1"
         },
         {
-          cardId: "home-goodbye",
+          cardId: "home-see-you-later",
           emoji: "👋",
-          imagePlaceholder: "/images/goodbye.jpg",
-          phrase: "Goodbye.",
-          audioAssetId: "en-home-goodbye-1"
+          imagePlaceholder: "/images/home-see-you-later.png",
+          phrase: "See you later.",
+          audioAssetId: "en-home-see-you-later-1"
         },
         {
           cardId: "home-good-morning",
           emoji: "🌅",
-          imagePlaceholder: "/images/good-morning.jpg",
+          imagePlaceholder: "/images/home-good-morning.png",
           phrase: "Good morning.",
           audioAssetId: "en-home-good-morning-1"
         },
         {
           cardId: "home-good-night",
           emoji: "🌙",
-          imagePlaceholder: "/images/good-night.jpg",
+          imagePlaceholder: "/images/home-good-night.png",
           phrase: "Good night.",
           audioAssetId: "en-home-good-night-1"
         },
         {
           cardId: "home-welcome",
           emoji: "🤗",
-          imagePlaceholder: "/images/welcome.jpg",
+          imagePlaceholder: "/images/home-welcome.png",
           phrase: "Welcome.",
           audioAssetId: "en-home-welcome-1"
         },
         {
           cardId: "home-please-come-in",
           emoji: "🚪",
-          imagePlaceholder: "/images/please-come-in.jpg",
+          imagePlaceholder: "/images/home-please-come-in.png",
           phrase: "Please come in.",
           audioAssetId: "en-home-please-come-in-1"
         },
         {
+          cardId: "home-have-a-nice-day",
+          emoji: "🌞",
+          imagePlaceholder: "/images/home-have-a-nice-day.png",
+          phrase: "Have a nice day.",
+          audioAssetId: "en-home-have-a-nice-day-1"
+        },
+        {
           cardId: "home-thank-you",
           emoji: "🙏",
-          imagePlaceholder: "/images/thank-you.jpg",
+          imagePlaceholder: "/images/home-thank-you.png",
           phrase: "Thank you.",
           audioAssetId: "en-home-thank-you-1"
         }
@@ -72,154 +79,362 @@ export const lessons = {
     },
     {
       id: "market",
-      title: "Market",
+      title: "At the Market",
       cards: [
         {
           cardId: "market-water",
           emoji: "💧",
-          imagePlaceholder: "/images/water.jpg",
+          imagePlaceholder: "/images/market-water.png",
           phrase: "Water",
-          audioAssetId: "en-market-water-1"
+          audioAssetId: "en-market-water-1",
+          phonicsWords: [
+            { word: "Water", sounds: [
+              { letters: "W", audioAssetId: "phonics-w" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "t", audioAssetId: "phonics-t" },
+              { letters: "er", audioAssetId: "phonics-er" }
+            ]}
+          ]
         },
         {
           cardId: "market-how-much-is-this",
           emoji: "❓",
-          imagePlaceholder: "/images/how-much-is-this.jpg",
+          imagePlaceholder: "/images/market-how-much-is-this.png",
           phrase: "How much is this?",
-          audioAssetId: "en-market-how-much-is-this-1"
+          audioAssetId: "en-market-how-much-is-this-1",
+          phonicsWords: [
+            { word: "How", sounds: [
+              { letters: "H", audioAssetId: "phonics-h" },
+              { letters: "ow", audioAssetId: "phonics-ow-diphthong" }
+            ]},
+            { word: "much", sounds: [
+              { letters: "m", audioAssetId: "phonics-m" },
+              { letters: "u", audioAssetId: "phonics-short-u" },
+              { letters: "ch", audioAssetId: "phonics-ch" }
+            ]},
+            { word: "is", sounds: [
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "s", audioAssetId: "phonics-s" }
+            ]},
+            { word: "this", sounds: [
+              { letters: "th", audioAssetId: "phonics-th-voiced" },
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "s", audioAssetId: "phonics-s" }
+            ]}
+          ]
         },
         {
           cardId: "market-this-costs-twenty-dollars",
           emoji: "💵",
-          imagePlaceholder: "/images/this-costs-20-dollars.jpg",
+          imagePlaceholder: "/images/market-this-costs-twenty-dollars.png",
           phrase: "This costs twenty dollars.",
-          audioAssetId: "en-market-this-costs-twenty-dollars-1"
+          audioAssetId: "en-market-this-costs-twenty-dollars-1",
+          phonicsWords: [
+            { word: "This", sounds: [
+              { letters: "Th", audioAssetId: "phonics-th-voiced" },
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "s", audioAssetId: "phonics-s" }
+            ]},
+            { word: "costs", sounds: [
+              { letters: "c", audioAssetId: "phonics-k" },
+              { letters: "o", audioAssetId: "phonics-long-o" },
+              { letters: "s", audioAssetId: "phonics-s" },
+              { letters: "t", audioAssetId: "phonics-t" },
+              { letters: "s", audioAssetId: "phonics-s" }
+            ]},
+            { word: "twenty", sounds: [
+              { letters: "t", audioAssetId: "phonics-t" },
+              { letters: "w", audioAssetId: "phonics-w" },
+              { letters: "e", audioAssetId: "phonics-short-e" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "t", audioAssetId: "phonics-t" },
+              { letters: "y", audioAssetId: "phonics-long-e" }
+            ]},
+            { word: "dollars", sounds: [
+              { letters: "d", audioAssetId: "phonics-d" },
+              { letters: "o", audioAssetId: "phonics-long-o" },
+              { letters: "ll", audioAssetId: "phonics-l" },
+              { letters: "ar", audioAssetId: "phonics-er" },
+              { letters: "s", audioAssetId: "phonics-s" }
+            ]}
+          ]
         },
         {
-          cardId: "market-apple",
+          cardId: "market-i-want-apples",
           emoji: "🍎",
-          imagePlaceholder: "/images/apple.jpg",
-          phrase: "Apple",
-          audioAssetId: "en-market-apple-1"
+          imagePlaceholder: "/images/market-i-want-apples.png",
+          phrase: "I want apples.",
+          audioAssetId: "en-market-i-want-apples-1",
+          phonicsWords: [
+            { word: "I", sounds: [
+              { letters: "I", audioAssetId: "phonics-ice" }
+            ]},
+            { word: "want", sounds: [
+              { letters: "w", audioAssetId: "phonics-w" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]},
+            { word: "apples", sounds: [
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "pp", audioAssetId: "phonics-p" },
+              { letters: "l", audioAssetId: "phonics-l" },
+              { letters: "e", audioAssetId: null },
+              { letters: "s", audioAssetId: "phonics-s" }
+            ]}
+          ]
         },
         {
-          cardId: "market-eggs",
+          cardId: "market-i-want-meat",
           emoji: "🥩",
-          imagePlaceholder: "/images/eggs.jpg",
-          phrase: "Eggs",
-          audioAssetId: "en-market-eggs-1"
+          imagePlaceholder: "/images/market-i-want-meat.png",
+          phrase: "I want meat.",
+          audioAssetId: "en-market-i-want-meat-1",
+          phonicsWords: [
+            { word: "I", sounds: [
+              { letters: "I", audioAssetId: "phonics-ice" }
+            ]},
+            { word: "want", sounds: [
+              { letters: "w", audioAssetId: "phonics-w" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]},
+            { word: "meat", sounds: [
+              { letters: "m", audioAssetId: "phonics-m" },
+              { letters: "ea", audioAssetId: "phonics-long-e" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]}
+          ]
         },
         {
-          cardId: "market-rice",
+          cardId: "market-i-want-rice",
           emoji: "🍚",
-          imagePlaceholder: "/images/rice.jpg",
-          phrase: "Rice.",
-          audioAssetId: "en-market-rice-1"
+          imagePlaceholder: "/images/market-rice.png",
+          phrase: "I want rice.",
+          audioAssetId: "en-market-i-want-rice-1",
+          phonicsWords: [
+            { word: "I", sounds: [
+              { letters: "I", audioAssetId: "phonics-ice" }
+            ]},
+            { word: "want", sounds: [
+              { letters: "w", audioAssetId: "phonics-w" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]},
+            { word: "rice", sounds: [
+              { letters: "r", audioAssetId: "phonics-r" },
+              { letters: "i", audioAssetId: "phonics-ice" },
+              { letters: "c", audioAssetId: "phonics-s" },
+              { letters: "e", audioAssetId: null }
+            ]}
+          ]
         },
         {
-          cardId: "market-milk",
+          cardId: "market-where-is-the-milk",
           emoji: "🥛",
-          imagePlaceholder: "/images/milk.jpg",
-          phrase: "Milk",
-          audioAssetId: "en-market-milk-1"
+          imagePlaceholder: "/images/market-where-is-the-milk.png",
+          phrase: "Where can I get milk?",
+          audioAssetId: "en-market-where-is-the-milk-1",
+          phonicsWords: [
+            { word: "Where", sounds: [
+              { letters: "Wh", audioAssetId: "phonics-wh" },
+              { letters: "ere", audioAssetId: "phonics-air" }
+            ]},
+            { word: "can", sounds: [
+              { letters: "c", audioAssetId: "phonics-k" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "n", audioAssetId: "phonics-n" }
+            ]},
+            { word: "I", sounds: [
+              { letters: "I", audioAssetId: "phonics-ice" }
+            ]},
+            { word: "get", sounds: [
+              { letters: "g", audioAssetId: "phonics-g" },
+              { letters: "e", audioAssetId: "phonics-short-e" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]},
+            { word: "milk", sounds: [
+              { letters: "m", audioAssetId: "phonics-m" },
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "l", audioAssetId: "phonics-l" },
+              { letters: "k", audioAssetId: "phonics-k" }
+            ]}
+          ]
         },
         {
-          cardId: "market-chicken",
+          cardId: "market-thats-too-expensive",
           emoji: "😕",
-          imagePlaceholder: "/images/chicken.jpg",
-          phrase: "Chicken",
-          audioAssetId: "en-market-chicken-1"
+          imagePlaceholder: "/images/market-thats-too-expensive.png",
+          phrase: "That is too expensive.",
+          audioAssetId: "en-market-thats-too-expensive-1",
+          phonicsWords: [
+            { word: "That", sounds: [
+              { letters: "Th", audioAssetId: "phonics-th-voiced" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]},
+            { word: "is", sounds: [
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "s", audioAssetId: "phonics-s" }
+            ]},
+            { word: "too", sounds: [
+              { letters: "t", audioAssetId: "phonics-t" },
+              { letters: "oo", audioAssetId: "phonics-y-oo" }
+            ]},
+            { word: "expensive", sounds: [
+              { letters: "e", audioAssetId: "phonics-short-i" },
+              { letters: "x", audioAssetId: ["phonics-k", "phonics-s"] },
+              { letters: "p", audioAssetId: "phonics-p" },
+              { letters: "e", audioAssetId: "phonics-short-e" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "s", audioAssetId: "phonics-s" },
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "ve", audioAssetId: "phonics-v" }
+            ]}
+          ]
         },
         {
-          cardId: "market-bread",
+          cardId: "market-can-you-give-discount",
           emoji: "🤝",
-          imagePlaceholder: "/images/bread.jpg",
-          phrase: "Bread",
-          audioAssetId: "en-market-bread-1"
+          imagePlaceholder: "/images/market-can-you-give-discount.png",
+          phrase: "Can you give a discount?",
+          audioAssetId: "en-market-can-you-give-discount-1",
+          phonicsWords: [
+            { word: "Can", sounds: [
+              { letters: "C", audioAssetId: "phonics-k" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "n", audioAssetId: "phonics-n" }
+            ]},
+            { word: "you", sounds: [
+              { letters: "y", audioAssetId: "phonics-j" },
+              { letters: "ou", audioAssetId: "phonics-y-oo" }
+            ]},
+            { word: "give", sounds: [
+              { letters: "g", audioAssetId: "phonics-g" },
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "ve", audioAssetId: "phonics-v" }
+            ]},
+            { word: "a", sounds: [
+              { letters: "a", audioAssetId: "phonics-short-a" }
+            ]},
+            { word: "discount", sounds: [
+              { letters: "d", audioAssetId: "phonics-d" },
+              { letters: "i", audioAssetId: "phonics-short-i" },
+              { letters: "s", audioAssetId: "phonics-s" },
+              { letters: "c", audioAssetId: "phonics-k" },
+              { letters: "ou", audioAssetId: "phonics-ow-diphthong" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]}
+          ]
         },
         {
-          cardId: "market-banana",
+          cardId: "market-i-dont-have-money",
           emoji: "😔",
-          imagePlaceholder: "/images/banana.jpg",
-          phrase: "Banana",
-          audioAssetId: "en-market-banana-1"
+          imagePlaceholder: "/images/market-i-dont-have-money.png",
+          phrase: "I don't have money.",
+          audioAssetId: "en-market-i-dont-have-money-1",
+          phonicsWords: [
+            { word: "I", sounds: [
+              { letters: "I", audioAssetId: "phonics-ice" }
+            ]},
+            { word: "don't", sounds: [
+              { letters: "d", audioAssetId: "phonics-d" },
+              { letters: "o", audioAssetId: "phonics-long-o" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "t", audioAssetId: "phonics-t" }
+            ]},
+            { word: "have", sounds: [
+              { letters: "h", audioAssetId: "phonics-h" },
+              { letters: "a", audioAssetId: "phonics-short-a" },
+              { letters: "ve", audioAssetId: "phonics-v" }
+            ]},
+            { word: "money", sounds: [
+              { letters: "m", audioAssetId: "phonics-m" },
+              { letters: "o", audioAssetId: "phonics-short-u" },
+              { letters: "n", audioAssetId: "phonics-n" },
+              { letters: "ey", audioAssetId: "phonics-long-e" }
+            ]}
+          ]
         }
       ]
     },
     {
       id: "clinic",
-      title: "Clinic",
+      title: "At the Clinic",
       cards: [
         {
           cardId: "clinic-i-feel-sick",
           emoji: "🤒",
-          imagePlaceholder: "/images/sick.jpg",
+          imagePlaceholder: "/images/clinic-i-feel-sick.png",
           phrase: "I feel sick.",
-          audioAssetId: "en-clinic-sick-1"
+          audioAssetId: "en-clinic-i-feel-sick-1"
         },
         {
-          cardId: "clinic-i-am-hurt",
+          cardId: "clinic-i-have-pain",
           emoji: "😣",
-          imagePlaceholder: "/images/i-am-hurt.jpg",
-          phrase: "I am hurt.",
-          audioAssetId: "en-clinic-i-am-hurt-1"
+          imagePlaceholder: "/images/clinic-i-have-pain.png",
+          phrase: "I have pain.",
+          audioAssetId: "en-clinic-i-have-pain-1"
         },
         {
           cardId: "clinic-my-head-hurts",
           emoji: "🤕",
-          imagePlaceholder: "/images/head-hurts.jpg",
+          imagePlaceholder: "/images/clinic-my-head-hurts.png",
           phrase: "My head hurts.",
           audioAssetId: "en-clinic-my-head-hurts-1"
         },
         {
           cardId: "clinic-my-stomach-hurts",
           emoji: "🤢",
-          imagePlaceholder: "/images/my-stomach-hurts.jpg",
+          imagePlaceholder: "/images/clinic-my-stomach-hurts.png",
           phrase: "My stomach hurts.",
           audioAssetId: "en-clinic-my-stomach-hurts-1"
         },
         {
-          cardId: "clinic-doctor",
+          cardId: "clinic-i-need-a-doctor",
           emoji: "🩺",
-          imagePlaceholder: "/images/doctor.jpg",
-          phrase: "Doctor",
-          audioAssetId: "en-clinic-doctor-1"
+          imagePlaceholder: "/images/clinic-i-need-a-doctor.png",
+          phrase: "I need a doctor.",
+          audioAssetId: "en-clinic-i-need-a-doctor-1"
         },
         {
-          cardId: "clinic-medicine",
+          cardId: "clinic-do-i-need-medicine",
           emoji: "💊",
-          imagePlaceholder: "/images/medicine.jpg",
-          phrase: "Medicine",
-          audioAssetId: "en-clinic-medicine-1"
+          imagePlaceholder: "/images/clinic-do-i-need-medicine.png",
+          phrase: "Do I need medicine?",
+          audioAssetId: "en-clinic-do-i-need-medicine-1"
         },
-        // {
-        //   cardId: "clinic-how-many-times-a-day",
-        //   emoji: "⏰",
-        //   imagePlaceholder: "/images/clinic-how-many-times-a-day.png",
-        //   phrase: "How many times a day?",
-        //   audioAssetId: "en-clinic-how-many-times-a-day-1"
-        // },
-        // {
-        //   cardId: "clinic-i-am-allergic",
-        //   emoji: "🤧",
-        //   imagePlaceholder: "/images/clinic-i-am-allergic.png",
-        //   phrase: "I am allergic.",
-        //   audioAssetId: "en-clinic-i-am-allergic-1"
-        // },
-        // {
-        //   cardId: "clinic-thank-you-doctor",
-        //   emoji: "🙏",
-        //   imagePlaceholder: "/images/clinic-thank-you-doctor.png",
-        //   phrase: "Thank you, doctor.",
-        //   audioAssetId: "en-clinic-thank-you-doctor-1"
-        // },
-        // {
-        //   cardId: "clinic-when-should-i-come-back",
-        //   emoji: "📅",
-        //   imagePlaceholder: "/images/clinic-when-should-i-come-back.png",
-        //   phrase: "When should I come back?",
-        //   audioAssetId: "en-clinic-when-should-i-come-back-1"
-        // }
+        {
+          cardId: "clinic-how-many-times-a-day",
+          emoji: "⏰",
+          imagePlaceholder: "/images/clinic-how-many-times-a-day.png",
+          phrase: "How many times a day?",
+          audioAssetId: "en-clinic-how-many-times-a-day-1"
+        },
+        {
+          cardId: "clinic-i-am-allergic",
+          emoji: "🤧",
+          imagePlaceholder: "/images/clinic-i-am-allergic.png",
+          phrase: "I am allergic.",
+          audioAssetId: "en-clinic-i-am-allergic-1"
+        },
+        {
+          cardId: "clinic-thank-you-doctor",
+          emoji: "🙏",
+          imagePlaceholder: "/images/clinic-thank-you-doctor.png",
+          phrase: "Thank you, doctor.",
+          audioAssetId: "en-clinic-thank-you-doctor-1"
+        },
+        {
+          cardId: "clinic-when-should-i-come-back",
+          emoji: "📅",
+          imagePlaceholder: "/images/clinic-when-should-i-come-back.png",
+          phrase: "When should I come back?",
+          audioAssetId: "en-clinic-when-should-i-come-back-1"
+        }
       ]
     }
   ]

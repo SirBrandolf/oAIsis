@@ -1,8 +1,9 @@
 const AUDIO_BASE_URL = "/audio";
 
 export class AudioPlaybackService {
-  getAudioUrl(audioAssetId, targetLanguage) {
-    return `${AUDIO_BASE_URL}/${targetLanguage}/${audioAssetId}.mp3`;
+  /** Returns URL for scenario (phrase) audio. Files in backend/public/audio/phrases/<lang>/{cardId}.mp3. */
+  getAudioUrl(cardId, targetLanguage) {
+    return `${AUDIO_BASE_URL}/phrases/${targetLanguage}/${cardId}.mp3`;
   }
 }
 

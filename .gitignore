@@ -19,3 +19,7 @@ dist-ssr
 *.sln
 *.sw?
 **/.env
+**/.venv
+**/__pycache__
+# Ignore all the auido file with different extensions
+.backend/scripts/*

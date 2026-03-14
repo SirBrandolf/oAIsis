@@ -31,6 +31,19 @@ export function App() {
       <header className="app-header">
         <h1 onClick={() => setCurrentScene(null)} style={{cursor: 'pointer'}}>Oaisis</h1>
         <p className="subtitle">Audio-first English scenes</p>
+        {!currentScene && (
+          <div className="app-instructions">
+            <span className="legend-item">
+              <span className="legend-icon">▶</span> Listen
+            </span>
+            <span className="legend-item">
+              <span className="legend-icon">🗣️</span> Speak
+            </span>
+            <span className="legend-item">
+              <span className="legend-icon">😐</span> Stop
+            </span>
+          </div>
+        )}
       </header>
 
       {/* Only use the dashboard layout if a scene is selected */}
