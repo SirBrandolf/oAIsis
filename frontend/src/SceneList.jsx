@@ -1,7 +1,7 @@
 import React from "react";
 import { getSceneEmoji } from "./sceneIcons";
 
-export function SceneList({ scenes, onSelectScene, error }) {
+export function SceneList({ scenes, onSelectScene, activeSceneId, error }) {
   if (error) {
     return <div className="scene-list">Failed to load scenes.</div>;
   }
@@ -11,7 +11,7 @@ export function SceneList({ scenes, onSelectScene, error }) {
       {scenes.map(scene => (
         <button
           key={scene.id}
-          className="scene-card"
+          className={`scene-card ${activeSceneId === scene.id ? 'active' : ''}`}
           onClick={() => onSelectScene(scene)}
         >
           <div className="scene-emoji">{getSceneEmoji(scene.id)}</div>
@@ -21,4 +21,3 @@ export function SceneList({ scenes, onSelectScene, error }) {
     </section>
   );
 }
-

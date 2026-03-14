@@ -1,4 +1,3 @@
-// src/CardView.jsx
 import React, { useState, useEffect } from "react";
 import { recognizePhrase } from "./api";
 

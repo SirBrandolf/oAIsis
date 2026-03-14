@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { fetchScenes, fetchCards } from "./api";
@@ -28,17 +27,17 @@ export function App() {
   };
 
   return (
-    <main id="app" className={currentScene ? "layout-dashboard" : "layout-grid"}>
+    <main id="app">
       <header className="app-header">
         <h1 onClick={() => setCurrentScene(null)} style={{cursor: 'pointer'}}>Oaisis</h1>
         <p className="subtitle">Audio-first English scenes</p>
       </header>
 
-      <div className="main-container">
-        {/* Sidebar: Only active when a scene is selected */}
+      {/* Only use the dashboard layout if a scene is selected */}
+      <div className={currentScene ? "main-container layout-dashboard" : "main-content"}>
         {currentScene && (
           <aside className="sidebar">
-            <h3>All Lessons</h3>
+            <h3 className="sidebar-title">Other Lessons</h3>
             <SceneList 
               scenes={scenes} 
               onSelectScene={handleSelectScene} 
@@ -47,12 +46,19 @@ export function App() {
           </aside>
         )}
 
-        {/* Center Content */}
         <section className="content-area">
           {!currentScene ? (
-            <SceneList scenes={scenes} onSelectScene={handleSelectScene} error={error} />
+            <SceneList 
+              scenes={scenes} 
+              onSelectScene={handleSelectScene} 
+              error={error} 
+            />
           ) : (
-            <CardView scene={currentScene} cards={cards} onBack={() => setCurrentScene(null)} />
+            <CardView 
+              scene={currentScene} 
+              cards={cards} 
+              onBack={() => setCurrentScene(null)} 
+            />
           )}
         </section>
       </div>
