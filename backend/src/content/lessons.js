@@ -8,42 +8,42 @@ export const lessons = {
         {
           cardId: "home-hello",
           emoji: "👋",
-          imagePlaceholder: "/images/home-hello.png",
+          imagePlaceholder: "/images/hello.jpg",
           phrase: "Hello",
           audioAssetId: "en-home-hello-1"
         },
         {
           cardId: "home-how-are-you",
           emoji: "🙂",
-          imagePlaceholder: "/images/home-how-are-you.png",
+          imagePlaceholder: "/images/how-are-you.jpg",
           phrase: "How are you?",
           audioAssetId: "en-home-how-are-you-1"
         },
         {
           cardId: "home-i-am-fine",
           emoji: "😊",
-          imagePlaceholder: "/images/home-i-am-fine.png",
+          imagePlaceholder: "/images/i-am-fine.jpg",
           phrase: "I am fine.",
           audioAssetId: "en-home-i-am-fine-1"
         },
         {
           cardId: "home-see-you-later",
           emoji: "👋",
-          imagePlaceholder: "/images/home-see-you-later.png",
+          imagePlaceholder: "/images/goodbye.jpg",
           phrase: "See you later.",
           audioAssetId: "en-home-see-you-later-1"
         },
         {
           cardId: "home-good-morning",
           emoji: "🌅",
-          imagePlaceholder: "/images/home-good-morning.png",
+          imagePlaceholder: "/images/good-morning.jpg",
           phrase: "Good morning.",
           audioAssetId: "en-home-good-morning-1"
         },
         {
           cardId: "home-good-night",
           emoji: "🌙",
-          imagePlaceholder: "/images/home-good-night.png",
+          imagePlaceholder: "/images/good-night.jpg",
           phrase: "Good night.",
           audioAssetId: "en-home-good-night-1"
         },
@@ -57,7 +57,7 @@ export const lessons = {
         {
           cardId: "home-please-come-in",
           emoji: "🚪",
-          imagePlaceholder: "/images/home-please-come-in.png",
+          imagePlaceholder: "/images/please-come-in.jpg",
           phrase: "Please come in.",
           audioAssetId: "en-home-please-come-in-1"
         },
@@ -71,7 +71,7 @@ export const lessons = {
         {
           cardId: "home-thank-you",
           emoji: "🙏",
-          imagePlaceholder: "/images/home-thank-you.png",
+          imagePlaceholder: "/images/thank-you.jpg",
           phrase: "Thank you.",
           audioAssetId: "en-home-thank-you-1"
         }
@@ -84,7 +84,7 @@ export const lessons = {
         {
           cardId: "market-water",
           emoji: "💧",
-          imagePlaceholder: "/images/market-water.png",
+          imagePlaceholder: "/images/water.jpg",
           phrase: "Water",
           audioAssetId: "en-market-water-1",
           phonicsWords: [
@@ -99,7 +99,7 @@ export const lessons = {
         {
           cardId: "market-how-much-is-this",
           emoji: "❓",
-          imagePlaceholder: "/images/market-how-much-is-this.png",
+          imagePlaceholder: "/images/how-much-is-this.jpg",
           phrase: "How much is this?",
           audioAssetId: "en-market-how-much-is-this-1",
           phonicsWords: [
@@ -126,7 +126,7 @@ export const lessons = {
         {
           cardId: "market-this-costs-twenty-dollars",
           emoji: "💵",
-          imagePlaceholder: "/images/market-this-costs-twenty-dollars.png",
+          imagePlaceholder: "/images/this-costs-20-dollars.jpg",
           phrase: "This costs twenty dollars.",
           audioAssetId: "en-market-this-costs-twenty-dollars-1",
           phonicsWords: [
@@ -162,7 +162,7 @@ export const lessons = {
         {
           cardId: "market-i-want-apples",
           emoji: "🍎",
-          imagePlaceholder: "/images/market-i-want-apples.png",
+          imagePlaceholder: "/images/apple.jpg",
           phrase: "I want apples.",
           audioAssetId: "en-market-i-want-apples-1",
           phonicsWords: [
@@ -187,7 +187,7 @@ export const lessons = {
         {
           cardId: "market-i-want-meat",
           emoji: "🥩",
-          imagePlaceholder: "/images/market-i-want-meat.png",
+          imagePlaceholder: "/images/chicken.jpg",
           phrase: "I want meat.",
           audioAssetId: "en-market-i-want-meat-1",
           phonicsWords: [
@@ -210,7 +210,7 @@ export const lessons = {
         {
           cardId: "market-i-want-rice",
           emoji: "🍚",
-          imagePlaceholder: "/images/market-rice.png",
+          imagePlaceholder: "/images/rice.jpg",
           phrase: "I want rice.",
           audioAssetId: "en-market-i-want-rice-1",
           phonicsWords: [
@@ -234,7 +234,7 @@ export const lessons = {
         {
           cardId: "market-where-is-the-milk",
           emoji: "🥛",
-          imagePlaceholder: "/images/market-where-is-the-milk.png",
+          imagePlaceholder: "/images/milk.jpg",
           phrase: "Where can I get milk?",
           audioAssetId: "en-market-where-is-the-milk-1",
           phonicsWords: [
@@ -266,7 +266,7 @@ export const lessons = {
         {
           cardId: "market-thats-too-expensive",
           emoji: "😕",
-          imagePlaceholder: "/images/market-thats-too-expensive.png",
+          imagePlaceholder: null,
           phrase: "That is too expensive.",
           audioAssetId: "en-market-thats-too-expensive-1",
           phonicsWords: [
@@ -298,7 +298,7 @@ export const lessons = {
         {
           cardId: "market-can-you-give-discount",
           emoji: "🤝",
-          imagePlaceholder: "/images/market-can-you-give-discount.png",
+          imagePlaceholder: null,
           phrase: "Can you give a discount?",
           audioAssetId: "en-market-can-you-give-discount-1",
           phonicsWords: [
@@ -333,7 +333,7 @@ export const lessons = {
         {
           cardId: "market-i-dont-have-money",
           emoji: "😔",
-          imagePlaceholder: "/images/market-i-dont-have-money.png",
+          imagePlaceholder: null,
           phrase: "I don't have money.",
           audioAssetId: "en-market-i-dont-have-money-1",
           phonicsWords: [
@@ -368,49 +368,49 @@ export const lessons = {
         {
           cardId: "clinic-i-feel-sick",
           emoji: "🤒",
-          imagePlaceholder: "/images/clinic-i-feel-sick.png",
+          imagePlaceholder: "/images/sick.jpg",
           phrase: "I feel sick.",
           audioAssetId: "en-clinic-i-feel-sick-1"
         },
         {
           cardId: "clinic-i-have-pain",
           emoji: "😣",
-          imagePlaceholder: "/images/clinic-i-have-pain.png",
+          imagePlaceholder: "/images/i-am-hurt.jpg",
           phrase: "I have pain.",
           audioAssetId: "en-clinic-i-have-pain-1"
         },
         {
           cardId: "clinic-my-head-hurts",
           emoji: "🤕",
-          imagePlaceholder: "/images/clinic-my-head-hurts.png",
+          imagePlaceholder: "/images/my-head-hurts.jpg",
           phrase: "My head hurts.",
           audioAssetId: "en-clinic-my-head-hurts-1"
         },
         {
           cardId: "clinic-my-stomach-hurts",
           emoji: "🤢",
-          imagePlaceholder: "/images/clinic-my-stomach-hurts.png",
+          imagePlaceholder: "/images/my-stomach-hurts.jpg",
           phrase: "My stomach hurts.",
           audioAssetId: "en-clinic-my-stomach-hurts-1"
         },
         {
           cardId: "clinic-i-need-a-doctor",
           emoji: "🩺",
-          imagePlaceholder: "/images/clinic-i-need-a-doctor.png",
+          imagePlaceholder: "/images/doctor.jpg",
           phrase: "I need a doctor.",
           audioAssetId: "en-clinic-i-need-a-doctor-1"
         },
         {
           cardId: "clinic-do-i-need-medicine",
           emoji: "💊",
-          imagePlaceholder: "/images/clinic-do-i-need-medicine.png",
+          imagePlaceholder: "/images/medicine.jpg",
           phrase: "Do I need medicine?",
           audioAssetId: "en-clinic-do-i-need-medicine-1"
         },
         {
           cardId: "clinic-how-many-times-a-day",
           emoji: "⏰",
-          imagePlaceholder: "/images/clinic-how-many-times-a-day.png",
+          imagePlaceholder: null,
           phrase: "How many times a day?",
           audioAssetId: "en-clinic-how-many-times-a-day-1"
         },
@@ -424,14 +424,14 @@ export const lessons = {
         {
           cardId: "clinic-thank-you-doctor",
           emoji: "🙏",
-          imagePlaceholder: "/images/clinic-thank-you-doctor.png",
+          imagePlaceholder: "/images/thank-you.jpg",
           phrase: "Thank you, doctor.",
           audioAssetId: "en-clinic-thank-you-doctor-1"
         },
         {
           cardId: "clinic-when-should-i-come-back",
           emoji: "📅",
-          imagePlaceholder: "/images/clinic-when-should-i-come-back.png",
+          imagePlaceholder: null,
           phrase: "When should I come back?",
           audioAssetId: "en-clinic-when-should-i-come-back-1"
         }

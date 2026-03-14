@@ -32,10 +32,13 @@ const DIPHTHONG_IDS = new Set([
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const frontendDir = path.resolve(__dirname, "../../frontend/dist");
+const frontendPublicDir = path.resolve(__dirname, "../../frontend/public");
 // Scenario (phrase) audio: public/audio/phrases/<lang>/. Phonics: public/audio/phonics/<lang>/.
 const audioDir = path.resolve(__dirname, "../public/audio");
 
 app.use("/audio", express.static(audioDir));
+// Serve images from frontend/public/images so they load in dev and when backend serves the app
+app.use("/images", express.static(path.join(frontendPublicDir, "images")));
 
 app.get("/api/scenes", (_req, res) => {
   res.json({

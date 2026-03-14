@@ -13,7 +13,7 @@ export default defineConfig({
       "/audio": {
         target: "http://localhost:4000",
         changeOrigin: true
-      }
+      },
     }
   }
 });
