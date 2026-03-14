@@ -1,8 +1,9 @@
 const AUDIO_BASE_URL = "/audio";
 
 export class AudioPlaybackService {
-  getAudioUrl(audioAssetId, targetLanguage) {
-    return `${AUDIO_BASE_URL}/${targetLanguage}/${audioAssetId}.mp3`;
+  /** Returns URL for phrase audio; file is named by cardId (e.g. home-hello.mp3). */
+  getAudioUrl(cardId, targetLanguage) {
+    return `${AUDIO_BASE_URL}/${targetLanguage}/${cardId}.mp3`;
   }
 }
 
