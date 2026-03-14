@@ -19,3 +19,17 @@ dist-ssr
 *.sln
 *.sw?
 **/.env
+**/.venv
+**/__pycache__
+# Ignore all the auido file with different extensions
+**/*.mp3
+**/*.wav
+**/*.m4a
+**/*.ogg
+**/*.webm
+**/*.mpeg
+**/*.mpga
+**/*.mp4
+**/*.m4v
+**/*.m4b
+**/*.m4p
