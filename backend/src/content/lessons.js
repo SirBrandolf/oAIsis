@@ -442,14 +442,14 @@ export const lessons = {
       title: "Advanced Story (Fable)",
       cards: [
         {
-          cardId: "fable2",
+          cardId: "fable1",
           emoji: "📖",
           imagePlaceholder: "/images/oldlady_elephant.png",
           phrase: "The Old Woman and the Elephant",
           isAdvanced: true
         },
         {
-          cardId: "0_07_to_0_11",
+          cardId: "fable2",
           emoji: "📖",
           imagePlaceholder: "/images/elephant_moral.png",
           phrase: "The moral of the story is that if we help someone, they will help us when we need them.",
