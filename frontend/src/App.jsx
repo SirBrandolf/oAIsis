@@ -12,13 +12,8 @@ export function App() {
 
   useEffect(() => {
     fetchScenes()
-      .then(data => {
-        setScenes(data.scenes || []);
-      })
-      .catch(err => {
-        console.error(err);
-        setError(err);
-      });
+      .then(data => setScenes(data.scenes || []))
+      .catch(err => setError(err));
   }, []);
 
   const handleSelectScene = async scene => {
@@ -27,20 +22,14 @@ export function App() {
       setCurrentScene(scene);
       setCards(data.cards || []);
     } catch (err) {
-      console.error(err);
       setError(err);
     }
-  };
-
-  const handleBack = () => {
-    setCurrentScene(null);
-    setCards([]);
   };
 
   return (
     <main id="app">
       <header className="app-header">
-        <h1>Oaisis</h1>
+        <h1 onClick={() => setCurrentScene(null)} style={{cursor: 'pointer'}}>Oaisis</h1>
         <p className="subtitle">Audio-first English scenes</p>
         {!currentScene && (
           <div className="app-instructions">
@@ -56,16 +45,36 @@ export function App() {
           </div>
         )}
       </header>
-      {!currentScene ? (
-        <SceneList
-          scenes={scenes}
-          onSelectScene={handleSelectScene}
-          error={error}
-        />
-      ) : (
-        <CardView scene={currentScene} cards={cards} onBack={handleBack} />
-      )}
+
+      {/* Only use the dashboard layout if a scene is selected */}
+      <div className={currentScene ? "main-container layout-dashboard" : "main-content"}>
+        {currentScene && (
+          <aside className="sidebar">
+            <h3 className="sidebar-title">Other Lessons</h3>
+            <SceneList 
+              scenes={scenes} 
+              onSelectScene={handleSelectScene} 
+              activeSceneId={currentScene.id} 
+            />
+          </aside>
+        )}
+
+        <section className="content-area">
+          {!currentScene ? (
+            <SceneList 
+              scenes={scenes} 
+              onSelectScene={handleSelectScene} 
+              error={error} 
+            />
+          ) : (
+            <CardView 
+              scene={currentScene} 
+              cards={cards} 
+              onBack={() => setCurrentScene(null)} 
+            />
+          )}
+        </section>
+      </div>
     </main>
   );
 }
-
