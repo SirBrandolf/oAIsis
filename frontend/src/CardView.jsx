@@ -1,111 +1,50 @@
+// src/CardView.jsx
 import React, { useState, useEffect } from "react";
 import { recognizePhrase } from "./api";
-
-function createAudioElement(url) {
-  return new Audio(url);
-}
 
 export function CardView({ scene, cards, onBack }) {
   const [index, setIndex] = useState(0);
   const [feedback, setFeedback] = useState(null);
-  const [currentAudio, setCurrentAudio] = useState(null);
-
-  useEffect(() => {
-    setIndex(0);
-    setFeedback(null);
-    if (currentAudio) {
-      currentAudio.pause();
-      setCurrentAudio(null);
-    }
-  }, [scene.id]);
-
-  if (!cards.length) {
-    return (
-      <section className="card-view">
-        <button className="back-button" onClick={onBack}>
-          ⬅ Scenes
-        </button>
-        <h2>{scene.title}</h2>
-        <p>No cards in this scene yet.</p>
-      </section>
-    );
-  }
 
   const card = cards[index];
 
-  const handlePlay = () => {
-    if (currentAudio) {
-      currentAudio.pause();
-    }
-    const audio = createAudioElement(card.audioUrl);
-    setCurrentAudio(audio);
-    audio.play();
-  };
-
-  const handleTry = async () => {
-    const result = await recognizePhrase(card.phrase, "en");
-    setFeedback(result.evaluation);
-  };
-
-  const handlePrev = () => {
-    const nextIndex = (index - 1 + cards.length) % cards.length;
-    setIndex(nextIndex);
-    setFeedback(null);
-  };
-
-  const handleNext = () => {
-    const nextIndex = (index + 1) % cards.length;
-    setIndex(nextIndex);
-    setFeedback(null);
-  };
+  if (!cards.length) return <p>Loading cards...</p>;
 
   return (
-    <section className="card-view">
-      <button className="back-button" onClick={onBack}>
-        ⬅ Scenes
-      </button>
-      <h2>{scene.title}</h2>
-      <div className="card-container">
-        <div className="card-emoji">{card.emoji}</div>
-        <div className="audio-controls">
-          <button
-            className="audio-button arrow"
-            onClick={handlePlay}
-            aria-label="Play phrase"
-          >
-            ▶
+    <div className="card-view-wrapper">
+      <div className="card-header">
+        <h2>{scene.title}</h2>
+        <span className="progress-text">Step {index + 1} of {cards.length}</span>
+      </div>
+
+      <div className="center-stage">
+        {/* Large Image Placeholder */}
+        <div className="large-image-placeholder">
+          <span className="main-emoji">{card.emoji}</span>
+          <p>{card.phrase}</p>
+        </div>
+
+        {/* 2 Large Audio Buttons */}
+        <div className="action-buttons">
+          <button className="btn-large btn-play" onClick={() => new Audio(card.audioUrl).play()}>
+            Play Audio
           </button>
-          <button
-            className="audio-button voice"
-            onClick={handleTry}
-            aria-label="Practice speaking phrase"
-          >
-            🎤
+          <button className="btn-large btn-mic" onClick={async () => {
+             const res = await recognizePhrase(card.phrase, "en");
+             setFeedback(res.evaluation);
+          }}>
+            Practice Speaking
           </button>
         </div>
-        <div className="card-phrase">{card.phrase}</div>
-        <div className="card-image-placeholder">Image placeholder</div>
-        <div
-          className={
-            "feedback" + (feedback ? " " + feedback.result : "")
-          }
-        >
-          {feedback
-            ? feedback.result === "correct"
-              ? "Correct!"
-              : "Try again."
-            : ""}
+
+        {/* 2 Small Nav Buttons */}
+        <div className="nav-controls">
+          <button className="btn-small" onClick={() => setIndex(Math.max(0, index - 1))}>Previous</button>
+          <button className="btn-small" onClick={() => setIndex(Math.min(cards.length - 1, index + 1))}>Next</button>
         </div>
+
+        {feedback && <div className={`feedback-toast ${feedback.result}`}>{feedback.result}</div>}
       </div>
-      <div className="card-controls">
-        <button className="nav-button" onClick={handlePrev}>
-          ◀
-        </button>
-        <button className="nav-button" onClick={handleNext}>
-          ▶
-        </button>
-      </div>
-    </section>
+    </div>
   );
 }
-
