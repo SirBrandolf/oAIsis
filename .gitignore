@@ -22,7 +22,6 @@ dist-ssr
 **/.venv
 **/__pycache__
 # Ignore all the auido file with different extensions
-**/*.mp3
 **/*.wav
 **/*.m4a
 **/*.ogg
