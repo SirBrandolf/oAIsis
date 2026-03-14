@@ -22,3 +22,26 @@ export async function recognizePhrase(expectedPhrase, targetLanguage) {
   return res.json();
 }
 
+/**
+ * Send recorded audio to the model service for transcription and optional evaluation.
+ * @param {Blob} audioBlob - Recorded audio (e.g. from MediaRecorder).
+ * @param {string|null} expectedPhrase - If provided, response includes evaluation.
+ * @returns {Promise<{ transcript: string, evaluation?: { result: string, score?: number } }>}
+ */
+export async function verifyAudio(audioBlob, expectedPhrase = null) {
+  const form = new FormData();
+  form.append("audio", audioBlob, "audio.webm");
+  if (expectedPhrase) form.append("expectedPhrase", expectedPhrase);
+
+  const res = await fetch(`${API_BASE}/verify-audio`, {
+    method: "POST",
+    body: form
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: res.statusText }));
+    throw new Error(err.detail || err.error || "Verification failed");
+  }
+  return res.json();
+}
+

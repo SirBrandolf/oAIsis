@@ -26,6 +26,25 @@ body {
   font-size: 1rem;
 }
 
+.app-instructions {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #ecfdf5;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.legend-icon {
+  font-size: 1.1rem;
+}
+
 .scene-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -105,6 +124,106 @@ body {
   color: #4b5563;
 }
 
+.card-phonics {
+  display: none;
+}
+
+.phonics-breakdown {
+  width: 100%;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.phonics-word-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.phonics-word-row:last-child {
+  border-bottom: none;
+}
+
+.phonics-word-label {
+  min-width: 5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.phonics-word-sounds {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.phonics-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 12px;
+  border: 2px solid #a5b4fc;
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.phonics-button:hover {
+  background: #c7d2fe;
+}
+
+.phonics-button:active {
+  transform: scale(0.95);
+}
+
+.phonics-button-icon {
+  font-size: 1.15rem;
+}
+
+.phonics-button-label {
+  white-space: nowrap;
+}
+
+.phonics-button--diphthong {
+  border-color: #818cf8;
+  background: #e0e7ff;
+  border-width: 3px;
+}
+
+.phonics-button--diphthong:hover {
+  background: #c7d2fe;
+}
+
+.phonics-button--silent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 12px;
+  border: 2px dashed #d1d5db;
+  background: #f3f4f6;
+  color: #9ca3af;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: default;
+}
+
 .audio-controls {
   display: flex;
   gap: 1rem;
@@ -137,12 +256,18 @@ body {
   font-weight: 500;
 }
 
-.feedback.correct {
+.feedback.correct,
+.feedback--good {
   color: #22c55e;
 }
 
-.feedback.try_again {
+.feedback.try_again,
+.feedback--try_again {
   color: #f97316;
+}
+
+.feedback--close {
+  color: #d97706;
 }
 
 .card-controls {
@@ -164,5 +289,23 @@ body {
 button:focus-visible {
   outline: 3px solid #0ea5e9;
   outline-offset: 2px;
+}
+
+.audio-button.voice.recording {
+  background: #dc2626;
+  color: #fff;
+}
+
+.recording-hint {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0;
+}
+
+.transcript {
+  font-size: 0.95rem;
+  color: #374151;
+  margin: 0.25rem 0 0;
+  font-style: italic;
 }
 

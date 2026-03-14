@@ -10,16 +10,12 @@ from typing import Any
 
 from dotenv import load_dotenv
 
-# Load .env from current directory and from project root (parent of model-service)
-_load_dirs = [
-    os.path.dirname(os.path.abspath(__file__)),
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."),
-]
-for _d in _load_dirs:
-    _env_path = os.path.join(_d, ".env")
-    if os.path.isfile(_env_path):
-        load_dotenv(_env_path)
-        break
+# Load .env from project root only (parent of model-service)
+_this_dir = os.path.dirname(os.path.abspath(__file__))
+_project_root = os.path.normpath(os.path.join(_this_dir, ".."))
+_env_path = os.path.join(_project_root, ".env")
+if os.path.isfile(_env_path):
+    load_dotenv(_env_path)
 else:
     load_dotenv()
 
@@ -92,7 +88,7 @@ def _get_client():  # type: () -> Any
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key or not str(api_key).strip():
         raise RuntimeError(
-            "OPENAI_API_KEY is not set. Add it to a .env file in the project root or model-service directory."
+            "OPENAI_API_KEY is not set. Add it to a .env file in the project root (oaisis/.env)."
         )
     return OpenAI(api_key=api_key.strip())
 

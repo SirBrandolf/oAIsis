@@ -36,6 +36,19 @@ Key classes:
 
 ---
 
+### Phonics audio (one-time setup)
+
+Market scene cards use phonics segment audio. To fetch all IPA sound files (from [PhoneticFlashCards](https://github.com/joshstephenson/PhoneticFlashCards)) into the repo in one go, run once from the repo root:
+
+```bash
+cd backend
+npm run download-phonics
+```
+
+This downloads the mapped consonant/vowel clips into `backend/public/audio/en/`. The backend serves them at `/audio/en/` and the frontend uses them for the small listen buttons on market cards.
+
+---
+
 ### Running the backend on macOS
 
 Prerequisites:

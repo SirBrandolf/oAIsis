@@ -5,7 +5,7 @@ Python FastAPI app where LLM / speech logic lives. Includes the OpenAI-based AI 
 ## How to run
 
 1. **API key**  
-   Put `OPENAI_API_KEY=your_key` in a `.env` file in the project root (`oAIsis/`) or in this directory.
+   Put `OPENAI_API_KEY=your_key` in a `.env` file at the **project root** (the folder that contains `backend/`, `frontend/`, and `model-service/`). The model-service loads only from this root-level `.env`.
 
 2. **Install and run the API**
    ```bash
