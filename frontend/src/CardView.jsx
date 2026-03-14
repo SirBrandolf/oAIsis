@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { verifyAudio } from "./api";
 
-function createAudioElement(url) {
-  return new Audio(url);
-}
-
 function playSequential(urls) {
   if (!urls || !urls.length) return;
   let i = 0;
@@ -22,79 +18,62 @@ export function CardView({ scene, cards, onBack }) {
   const [index, setIndex] = useState(0);
   const [feedback, setFeedback] = useState(null);
   const [transcript, setTranscript] = useState(null);
-  const [currentAudio, setCurrentAudio] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [recordingError, setRecordingError] = useState(null);
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
+  const [currentAudio, setCurrentAudio] = useState(null);
 
   useEffect(() => {
     setIndex(0);
     setFeedback(null);
     setTranscript(null);
+    setRecordingError(null);
     if (currentAudio) {
       currentAudio.pause();
       setCurrentAudio(null);
     }
   }, [scene.id]);
 
-  if (!cards.length) {
-    return (
-      <section className="card-view">
-        <button className="back-button" onClick={onBack}>
-          ⬅ Scenes
-        </button>
-        <h2>{scene.title}</h2>
-        <p>No cards in this scene yet.</p>
-      </section>
-    );
-  }
+  if (!cards.length) return <p>No cards in this scene yet.</p>;
 
   const card = cards[index];
   const isAdvanced = card.isAdvanced && (card.audioUrlEn != null || card.audioUrlRh != null);
 
   const handlePlay = () => {
-    if (currentAudio) {
-      currentAudio.pause();
-    }
-    const audio = createAudioElement(card.audioUrl);
+    if (currentAudio) currentAudio.pause();
+    const audio = new Audio(card.audioUrl);
     setCurrentAudio(audio);
     audio.play();
   };
 
   const handlePlayLanguage = (url) => {
-    if (currentAudio) {
-      currentAudio.pause();
-    }
+    if (currentAudio) currentAudio.pause();
     if (!url) return;
-    const audioBase = import.meta.env.DEV ? "http://localhost:4000" : "";
-    const audio = createAudioElement(audioBase + url);
+    const base = import.meta.env.DEV ? "http://localhost:4000" : "";
+    const audio = new Audio(base + url);
     setCurrentAudio(audio);
     audio.play();
   };
 
   const handleTry = async () => {
     if (isRecording) {
-      if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+      if (mediaRecorderRef.current?.state === "recording") {
         mediaRecorderRef.current.stop();
       }
       return;
     }
-
     setRecordingError(null);
     setTranscript(null);
     setFeedback(null);
     chunksRef.current = [];
-
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const recorder = new MediaRecorder(stream);
       mediaRecorderRef.current = recorder;
-
       recorder.ondataavailable = (e) => {
         if (e.data.size > 0) chunksRef.current.push(e.data);
       };
-
       recorder.onstop = async () => {
         stream.getTracks().forEach((t) => t.stop());
         if (chunksRef.current.length === 0) {
@@ -112,7 +91,6 @@ export function CardView({ scene, cards, onBack }) {
         }
         setIsRecording(false);
       };
-
       recorder.start();
       setIsRecording(true);
     } catch (err) {
@@ -122,86 +100,111 @@ export function CardView({ scene, cards, onBack }) {
   };
 
   const handlePrev = () => {
-    const nextIndex = (index - 1 + cards.length) % cards.length;
-    setIndex(nextIndex);
+    setIndex((i) => (i - 1 + cards.length) % cards.length);
     setFeedback(null);
     setTranscript(null);
     setRecordingError(null);
   };
 
   const handleNext = () => {
-    const nextIndex = (index + 1) % cards.length;
-    setIndex(nextIndex);
+    setIndex((i) => (i + 1) % cards.length);
     setFeedback(null);
     setTranscript(null);
     setRecordingError(null);
   };
 
   return (
-    <section className="card-view">
-      <button className="back-button" onClick={onBack}>
-        ⬅ Scenes
-      </button>
-      <h2>{scene.title}</h2>
-      <div className="card-container">
-        {card.imagePlaceholder ? (
-          <img
-            src={card.imagePlaceholder}
-            alt={card.phrase}
-            className="card-image-inline"
-          />
-        ) : (
-          <div className="card-emoji">{card.emoji}</div>
-        )}
-        <div className="audio-controls">
+    <div className="card-view-wrapper">
+      <div className="card-header">
+        <h2>{scene.title}</h2>
+        <span className="progress-text">
+          Step {index + 1} of {cards.length}
+        </span>
+      </div>
+
+      <div className="center-stage">
+        <div className="large-image-placeholder">
+          <div className="card-image-wrapper">
+            {card.imagePlaceholder ? (
+              <img
+                src={card.imagePlaceholder}
+                alt={card.phrase}
+                className="card-image"
+              />
+            ) : (
+              <span className="main-emoji">{card.emoji}</span>
+            )}
+          </div>
+          <p>{card.phrase}</p>
+        </div>
+
+        <div className="action-buttons">
           {isAdvanced ? (
             <>
               {card.audioUrlEn && (
                 <button
-                  className="audio-button arrow"
+                  className="btn-large btn-play"
                   onClick={() => handlePlayLanguage(card.audioUrlEn)}
                   aria-label="Play in English"
                 >
-                  ▶ 🇬🇧 English
+                  <img
+                    src="/images/listening-color-icon.webp"
+                    alt=""
+                    className="btn-icon"
+                  />
+                  English
                 </button>
               )}
               {card.audioUrlRh && (
                 <button
-                  className="audio-button arrow"
+                  className="btn-large btn-mic"
                   onClick={() => handlePlayLanguage(card.audioUrlRh)}
                   aria-label="Play in Rohingya"
                 >
-                  ▶ 🗣️ Rohingya
+                  <img
+                    src="/images/speaking-head.svg"
+                    alt=""
+                    className="btn-icon"
+                  />
+                  Rohingya
                 </button>
               )}
             </>
           ) : (
             <>
               <button
-                className="audio-button arrow"
+                className="btn-large btn-play"
                 onClick={handlePlay}
-                aria-label="Play phrase"
+                aria-label="Play audio"
               >
-                ▶
+                <img
+                  src="/images/listening-color-icon.webp"
+                  alt="Play audio"
+                  className="btn-icon"
+                />
               </button>
               <button
-                className={"audio-button voice" + (isRecording ? " recording" : "")}
+                className={`btn-large btn-mic${isRecording ? " recording" : ""}`}
                 onClick={handleTry}
-                aria-label={isRecording ? "Stop recording" : "Record and verify"}
+                aria-label={isRecording ? "Stop recording" : "Practice speaking"}
               >
-                {isRecording ? "😐" : "🗣️"}
+                <img
+                  src="/images/speaking-head.svg"
+                  alt="Practice speaking"
+                  className="btn-icon"
+                />
               </button>
             </>
           )}
         </div>
-        <div className="card-phrase">{card.phrase}</div>
+
         {!isAdvanced && Array.isArray(card.phonicsWords) && card.phonicsWords.length > 0 && (
           <div className="phonics-breakdown">
             {card.phonicsWords.map((wordEntry, wi) => (
               <div className="phonics-word-row" key={wi}>
                 <span className="phonics-word-label">{wordEntry.word}</span>
                 <div className="phonics-word-sounds">
-                  {wordEntry.sounds.map((s, si) => (
+                  {wordEntry.sounds.map((s, si) =>
                     s.silent ? (
                       <span
                         key={si}
@@ -219,11 +222,10 @@ export function CardView({ scene, cards, onBack }) {
                           (s.diphthong ? " phonics-button--diphthong" : "")
                         }
                         onClick={() => {
-                          if (s.audioUrls && s.audioUrls.length) {
+                          if (s.audioUrls?.length) {
                             playSequential(s.audioUrls);
                           } else if (s.audioUrl) {
-                            const a = createAudioElement(s.audioUrl);
-                            a.play();
+                            new Audio(s.audioUrl).play();
                           }
                         }}
                         aria-label={`Listen to sound ${s.letters}`}
@@ -232,44 +234,35 @@ export function CardView({ scene, cards, onBack }) {
                         <span className="phonics-button-label">{s.letters}</span>
                       </button>
                     )
-                  ))}
+                  )}
                 </div>
               </div>
             ))}
           </div>
         )}
-        {recordingError && <p className="feedback try_again">{recordingError}</p>}
-        {transcript != null && (
-          <p className="transcript">
-            &ldquo;{transcript}&rdquo;
-          </p>
+
+        {recordingError && (
+          <p className="feedback-toast try_again">{recordingError}</p>
         )}
-        <div className="card-image-placeholder">Image placeholder</div>
-        <div
-          className={
-            "feedback" +
-            (feedback && feedback.status
-              ? " feedback--" + feedback.status.toLowerCase()
-              : feedback && feedback.result
-                ? " " + feedback.result
-                : "")
-          }
-        >
-          {feedback
-            ? feedback.feedback ||
-              (feedback.result === "correct" ? "Correct!" : "Try again.")
-            : ""}
+        {transcript != null && (
+          <p className="transcript">&ldquo;{transcript}&rdquo;</p>
+        )}
+        {feedback && (
+          <div className={`feedback-toast ${feedback.result || ""}`}>
+            {feedback.feedback ||
+              (feedback.result === "correct" ? "Correct!" : "Try again.")}
+          </div>
+        )}
+
+        <div className="nav-controls">
+          <button className="btn-small" onClick={handlePrev} aria-label="Previous card">
+            ←
+          </button>
+          <button className="btn-small" onClick={handleNext} aria-label="Next card">
+            →
+          </button>
         </div>
       </div>
-      <div className="card-controls">
-        <button className="nav-button" onClick={handlePrev}>
-          ◀
-        </button>
-        <button className="nav-button" onClick={handleNext}>
-          ▶
-        </button>
-      </div>
-    </section>
+    </div>
   );
 }
-

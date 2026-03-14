@@ -11,7 +11,7 @@ export function SceneList({ scenes, onSelectScene, activeSceneId, error }) {
       {scenes.map(scene => (
         <button
           key={scene.id}
-          className={`scene-card ${activeSceneId === scene.id ? 'active' : ''}`}
+          className={`scene-card${activeSceneId === scene.id ? " active" : ""}`}
           onClick={() => onSelectScene(scene)}
         >
           <div className="scene-emoji">{getSceneEmoji(scene.id)}</div>
