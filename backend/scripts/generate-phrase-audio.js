@@ -1,6 +1,6 @@
 /**
  * Generates natural-sounding TTS audio for each phrase in lessons.
- * Output: one MP3 per card, named by cardId (e.g. home-hello.mp3).
+ * Output: backend/public/audio/phrases/<lang>/{cardId}.mp3.
  * Requires OPENAI_API_KEY in env; uses OpenAI TTS (gpt-4o-mini-tts, voice marin).
  */
 
@@ -27,7 +27,7 @@ function getProjectRoot() {
 function getOutputDir() {
   const root = getProjectRoot();
   const lang = lessons.targetLanguage || "en";
-  return path.join(root, "frontend", "public", "audio", lang);
+  return path.join(root, "backend", "public", "audio", "phrases", lang);
 }
 
 function getClient() {

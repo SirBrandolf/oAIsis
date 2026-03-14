@@ -22,7 +22,8 @@ const evaluator = new PronunciationEvaluator();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const frontendDir = path.resolve(__dirname, "../../frontend/dist");
-const audioDir = path.resolve(__dirname, "../../frontend/public/audio");
+// Scenario (phrase) audio: public/audio/phrases/<lang>/. Phonics: public/audio/phonics/<lang>/.
+const audioDir = path.resolve(__dirname, "../public/audio");
 
 app.use("/audio", express.static(audioDir));
 
