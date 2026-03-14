@@ -21,7 +21,7 @@ const evaluator = new PronunciationEvaluator();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const frontendDir = path.resolve(__dirname, "../../frontend");
+const frontendDir = path.resolve(__dirname, "../../frontend/dist");
 
 app.get("/api/scenes", (_req, res) => {
   res.json({

@@ -61,10 +61,6 @@ body {
   margin: 0 auto;
 }
 
-.hidden {
-  display: none;
-}
-
 .back-button {
   margin-bottom: 0.75rem;
   background: #ffffff;
@@ -126,11 +122,6 @@ body {
   gap: 0.5rem;
 }
 
-.audio-button.primary {
-  background: #22c55e;
-  color: #022c22;
-}
-
 .audio-button.arrow {
   background: #22c55e;
   color: #022c22;
@@ -139,12 +130,6 @@ body {
 .audio-button.voice {
   background: #0ea5e9;
   color: #e0f2fe;
-}
-
-.audio-button.secondary {
-  background: #0f172a;
-  color: #e5e7eb;
-  border: 1px solid #1f2937;
 }
 
 .feedback {
@@ -180,3 +165,4 @@ button:focus-visible {
   outline: 3px solid #0ea5e9;
   outline-offset: 2px;
 }
+

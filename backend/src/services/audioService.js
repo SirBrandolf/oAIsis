@@ -7,11 +7,44 @@ export class AudioPlaybackService {
 }
 
 export class SpeechRecognitionService {
-  async recognize(_audioBlob, expectedPhrase, _targetLanguage) {
-    return {
-      recognizedText: expectedPhrase,
-      confidence: 0.99
-    };
+  constructor() {
+    this.remoteUrl = process.env.LLM_SERVICE_URL || null;
+  }
+
+  async recognize(_audioBlob, expectedPhrase, targetLanguage) {
+    if (!this.remoteUrl) {
+      return {
+        recognizedText: expectedPhrase,
+        confidence: 0.99
+      };
+    }
+
+    try {
+      const res = await fetch(`${this.remoteUrl}/recognize`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          expectedPhrase,
+          targetLanguage
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error(`LLM service error: ${res.status}`);
+      }
+
+      const data = await res.json();
+      return {
+        recognizedText: data.recognizedText ?? expectedPhrase,
+        confidence: data.confidence ?? 0.9
+      };
+    } catch (err) {
+      console.error("LLM recognition failed, falling back to stub:", err);
+      return {
+        recognizedText: expectedPhrase,
+        confidence: 0.5
+      };
+    }
   }
 }
 
