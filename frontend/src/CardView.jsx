@@ -67,7 +67,8 @@ export function CardView({ scene, cards, onBack }) {
       currentAudio.pause();
     }
     if (!url) return;
-    const audio = createAudioElement(url);
+    const audioBase = import.meta.env.DEV ? "http://localhost:4000" : "";
+    const audio = createAudioElement(audioBase + url);
     setCurrentAudio(audio);
     audio.play();
   };
