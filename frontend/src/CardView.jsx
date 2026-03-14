@@ -17,29 +17,67 @@ export function CardView({ scene, cards, onBack }) {
       </div>
 
       <div className="center-stage">
-        {/* Large Image Placeholder */}
+        {/* Large Image */}
         <div className="large-image-placeholder">
-          <span className="main-emoji">{card.emoji}</span>
+          <div className="card-image-wrapper">
+            {card.imagePlaceholder ? (
+              <img
+                src={card.imagePlaceholder}
+                alt={card.phrase}
+                className="card-image"
+              />
+            ) : (
+              <span className="main-emoji">{card.emoji}</span>
+            )}
+          </div>
           <p>{card.phrase}</p>
         </div>
 
         {/* 2 Large Audio Buttons */}
         <div className="action-buttons">
-          <button className="btn-large btn-play" onClick={() => new Audio(card.audioUrl).play()}>
-            Play Audio
+          <button
+            className="btn-large btn-play"
+            onClick={() => new Audio(card.audioUrl).play()}
+            aria-label="Play audio"
+          >
+            <img
+              src="/images/listening-color-icon.webp"
+              alt="Play audio"
+              className="btn-icon"
+            />
           </button>
-          <button className="btn-large btn-mic" onClick={async () => {
-             const res = await recognizePhrase(card.phrase, "en");
-             setFeedback(res.evaluation);
-          }}>
-            Practice Speaking
+          <button
+            className="btn-large btn-mic"
+            onClick={async () => {
+              const res = await recognizePhrase(card.phrase, "en");
+              setFeedback(res.evaluation);
+            }}
+            aria-label="Practice speaking"
+          >
+            <img
+              src="/images/speaking-head.svg"
+              alt="Practice speaking"
+              className="btn-icon"
+            />
           </button>
         </div>
 
         {/* 2 Small Nav Buttons */}
         <div className="nav-controls">
-          <button className="btn-small" onClick={() => setIndex(Math.max(0, index - 1))}>Previous</button>
-          <button className="btn-small" onClick={() => setIndex(Math.min(cards.length - 1, index + 1))}>Next</button>
+          <button
+            className="btn-small"
+            onClick={() => setIndex(Math.max(0, index - 1))}
+            aria-label="Previous card"
+          >
+            ←
+          </button>
+          <button
+            className="btn-small"
+            onClick={() => setIndex(Math.min(cards.length - 1, index + 1))}
+            aria-label="Next card"
+          >
+            →
+          </button>
         </div>
 
         {feedback && <div className={`feedback-toast ${feedback.result}`}>{feedback.result}</div>}
