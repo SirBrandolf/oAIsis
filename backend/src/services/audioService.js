@@ -9,7 +9,7 @@ export class AudioPlaybackService {
 
 export class SpeechRecognitionService {
   constructor() {
-    this.remoteUrl = process.env.LLM_SERVICE_URL || null;
+    this.remoteUrl = process.env.LLM_SERVICE_URL || "http://127.0.0.1:8001";
   }
 
   async recognize(_audioBlob, expectedPhrase, targetLanguage) {

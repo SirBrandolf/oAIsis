@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import fs from "fs";
@@ -11,6 +12,13 @@ import {
   PronunciationEvaluator
 } from "./services/audioService.js";
 import { getPhonicsAudioUrl, hasPhonicsFile } from "./services/phonicsLibrary.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootEnv = path.resolve(__dirname, "../../.env");
+const backendEnv = path.resolve(__dirname, "../.env");
+dotenv.config({ path: rootEnv });
+if (!process.env.LLM_SERVICE_URL) dotenv.config({ path: backendEnv });
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -29,8 +37,6 @@ const DIPHTHONG_IDS = new Set([
   "phonics-er", "phonics-air", "phonics-y-oo",
 ]);
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const frontendDir = path.resolve(__dirname, "../../frontend/dist");
 const frontendPublicDir = path.resolve(__dirname, "../../frontend/public");
 // Scenario (phrase) audio: public/audio/phrases/<lang>/. Phonics: public/audio/phonics/<lang>/.
@@ -185,4 +191,5 @@ app.get("*", (_req, res) => {
 
 app.listen(port, () => {
   console.log(`Backend listening on port ${port}`);
+  console.log(LLM_SERVICE_URL ? "Model service: configured" : "Model service: not configured (set LLM_SERVICE_URL in .env)");
 });
