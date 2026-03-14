@@ -436,6 +436,26 @@ export const lessons = {
           audioAssetId: "en-clinic-when-should-i-come-back-1"
         }
       ]
+    },
+    {
+      id: "fable",
+      title: "Advanced Story (Fable)",
+      cards: [
+        {
+          cardId: "fable2",
+          emoji: "📖",
+          imagePlaceholder: "/images/oldlady_elephant.png",
+          phrase: "The Old Woman and the Elephant",
+          isAdvanced: true
+        },
+        {
+          cardId: "0_07_to_0_11",
+          emoji: "📖",
+          imagePlaceholder: "/images/elephant_moral.png",
+          phrase: "The moral of the story is that if we help someone, they will help us when we need them.",
+          isAdvanced: true
+        }
+      ]
     }
   ]
 };

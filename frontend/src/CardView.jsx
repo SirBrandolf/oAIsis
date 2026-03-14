@@ -51,12 +51,23 @@ export function CardView({ scene, cards, onBack }) {
   }
 
   const card = cards[index];
+  const isAdvanced = card.isAdvanced && (card.audioUrlEn != null || card.audioUrlRh != null);
 
   const handlePlay = () => {
     if (currentAudio) {
       currentAudio.pause();
     }
     const audio = createAudioElement(card.audioUrl);
+    setCurrentAudio(audio);
+    audio.play();
+  };
+
+  const handlePlayLanguage = (url) => {
+    if (currentAudio) {
+      currentAudio.pause();
+    }
+    if (!url) return;
+    const audio = createAudioElement(url);
     setCurrentAudio(audio);
     audio.play();
   };
@@ -132,25 +143,58 @@ export function CardView({ scene, cards, onBack }) {
       </button>
       <h2>{scene.title}</h2>
       <div className="card-container">
-        <div className="card-emoji">{card.emoji}</div>
+        {card.imagePlaceholder ? (
+          <img
+            src={card.imagePlaceholder}
+            alt={card.phrase}
+            className="card-image-inline"
+          />
+        ) : (
+          <div className="card-emoji">{card.emoji}</div>
+        )}
         <div className="audio-controls">
-          <button
-            className="audio-button arrow"
-            onClick={handlePlay}
-            aria-label="Play phrase"
-          >
-            ▶
-          </button>
-          <button
-            className={"audio-button voice" + (isRecording ? " recording" : "")}
-            onClick={handleTry}
-            aria-label={isRecording ? "Stop recording" : "Record and verify"}
-          >
-            {isRecording ? "😐" : "🗣️"}
-          </button>
+          {isAdvanced ? (
+            <>
+              {card.audioUrlEn && (
+                <button
+                  className="audio-button arrow"
+                  onClick={() => handlePlayLanguage(card.audioUrlEn)}
+                  aria-label="Play in English"
+                >
+                  ▶ 🇬🇧 English
+                </button>
+              )}
+              {card.audioUrlRh && (
+                <button
+                  className="audio-button arrow"
+                  onClick={() => handlePlayLanguage(card.audioUrlRh)}
+                  aria-label="Play in Rohingya"
+                >
+                  ▶ 🗣️ Rohingya
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              <button
+                className="audio-button arrow"
+                onClick={handlePlay}
+                aria-label="Play phrase"
+              >
+                ▶
+              </button>
+              <button
+                className={"audio-button voice" + (isRecording ? " recording" : "")}
+                onClick={handleTry}
+                aria-label={isRecording ? "Stop recording" : "Record and verify"}
+              >
+                {isRecording ? "😐" : "🗣️"}
+              </button>
+            </>
+          )}
         </div>
         <div className="card-phrase">{card.phrase}</div>
-        {Array.isArray(card.phonicsWords) && card.phonicsWords.length > 0 && (
+        {!isAdvanced && Array.isArray(card.phonicsWords) && card.phonicsWords.length > 0 && (
           <div className="phonics-breakdown">
             {card.phonicsWords.map((wordEntry, wi) => (
               <div className="phonics-word-row" key={wi}>

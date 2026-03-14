@@ -11,6 +11,9 @@ export function getSceneEmoji(sceneId) {
   if (id.includes("clinic") || id.includes("doctor")) {
     return "🩺";
   }
+  if (id.includes("fable") || id.includes("advanced") || id.includes("story")) {
+    return "📖";
+  }
 
   return "📚";
 }

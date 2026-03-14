@@ -53,34 +53,50 @@ app.get("/api/scenes/:sceneId/cards", (req, res) => {
     return;
   }
 
-  const cards = scene.cards.map(card => ({
-    cardId: card.cardId,
-    emoji: card.emoji,
-    imagePlaceholder: card.imagePlaceholder,
-    phrase: card.phrase,
-    audioUrl: audioService.getAudioUrl(card.cardId, lessons.targetLanguage),
-    phonicsWords: Array.isArray(card.phonicsWords)
-      ? card.phonicsWords.map(wordEntry => ({
-          word: wordEntry.word,
-          sounds: wordEntry.sounds.map(s => {
-            const ids = s.audioAssetId;
-            const isMulti = Array.isArray(ids);
-            const singleId = isMulti ? null : ids;
-            const resolveUrl = id =>
-              id && hasPhonicsFile(id)
-                ? getPhonicsAudioUrl(id, lessons.targetLanguage, "/audio")
-                : null;
-            return {
-              letters: s.letters,
-              silent: !ids || (isMulti && ids.length === 0),
-              audioUrl: isMulti ? null : resolveUrl(singleId),
-              audioUrls: isMulti ? ids.map(resolveUrl).filter(Boolean) : null,
-              diphthong: !!(singleId && DIPHTHONG_IDS.has(singleId))
-            };
-          })
-        }))
-      : []
-  }));
+  const isFable = scene.id === "fable";
+  const cards = scene.cards.map(card => {
+    const isAdvanced = card.isAdvanced || isFable;
+    if (isAdvanced) {
+      return {
+        cardId: card.cardId,
+        emoji: card.emoji,
+        imagePlaceholder: card.imagePlaceholder ?? null,
+        phrase: card.phrase,
+        isAdvanced: true,
+        audioUrlEn: `/audio/stories/${card.cardId}_en.mp3`,
+        audioUrlRh: `/audio/stories/${card.cardId}_rh.mp3`,
+        phonicsWords: []
+      };
+    }
+    return {
+      cardId: card.cardId,
+      emoji: card.emoji,
+      imagePlaceholder: card.imagePlaceholder,
+      phrase: card.phrase,
+      audioUrl: audioService.getAudioUrl(card.cardId, lessons.targetLanguage),
+      phonicsWords: Array.isArray(card.phonicsWords)
+        ? card.phonicsWords.map(wordEntry => ({
+            word: wordEntry.word,
+            sounds: wordEntry.sounds.map(s => {
+              const ids = s.audioAssetId;
+              const isMulti = Array.isArray(ids);
+              const singleId = isMulti ? null : ids;
+              const resolveUrl = id =>
+                id && hasPhonicsFile(id)
+                  ? getPhonicsAudioUrl(id, lessons.targetLanguage, "/audio")
+                  : null;
+              return {
+                letters: s.letters,
+                silent: !ids || (isMulti && ids.length === 0),
+                audioUrl: isMulti ? null : resolveUrl(singleId),
+                audioUrls: isMulti ? ids.map(resolveUrl).filter(Boolean) : null,
+                diphthong: !!(singleId && DIPHTHONG_IDS.has(singleId))
+              };
+            })
+          }))
+        : []
+    };
+  });
 
   res.json({
     sceneId: scene.id,

@@ -14,6 +14,11 @@ The backend serves `/audio` from `backend/public/audio/`. Scenario and phonics a
   - Fetched by `npm run download-phonics`; placeholders and custom recordings go here.
   - Served at `/audio/phonics/<lang>/{assetId}.mp3`.
 
+- **`stories/`** – Advanced Story (Fable) dual-language audio
+  - One pair per card: `{cardId}_en.mp3` (English), `{cardId}_rh.mp3` (Rohingya).
+  - Example: `fable2_en.mp3`, `fable2_rh.mp3` for cardId `fable2`.
+  - Served at `/audio/stories/{cardId}_en.mp3` and `/audio/stories/{cardId}_rh.mp3`.
+
 ## Scripts (run from backend)
 
 - `npm run generate-phrase-audio` – generate phrase MP3s into `public/audio/phrases/en/`
